@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <suite name="测试套件" parallel="tests" thread-count="2">
-<!--    <listeners>-->
-<!--        <listener class-name="com.lemon.Listener.TestResultListener"></listener>-->
-<!--        <listener class-name="com.lemon.Listener.RetryListener"></listener>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name="com.lemon.Listener.TestResultListener"></listener>
+        <listener class-name="com.lemon.Listener.RetryListener"></listener>
+    </listeners>
     <test name="device01">
         <parameter name="systemPort" value="8200"/>
         <parameter name="udid" value="127.0.0.1:62001"/>
