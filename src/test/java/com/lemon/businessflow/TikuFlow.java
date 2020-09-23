@@ -51,7 +51,7 @@ public class TikuFlow extends BaseFlow {
     }
 
     //题库收藏功能
-    public List<String> tikuCollection(){
+    public List<String> tikuCollection() throws InterruptedException {
         List<String> data = new ArrayList<>();
         //获取到当前收藏数量
         click(IndexPage.mylemonBy);
@@ -79,9 +79,13 @@ public class TikuFlow extends BaseFlow {
         //5、获取提示信息：收藏成功
         String tips = getToastText("收藏成功");
         //返回到首页
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         //收藏之后我的柠檬页面的收藏数量
         click(IndexPage.mylemonBy);
         String afterCollectionCount = getElementText(MylemonPage.collectionCountBy);

@@ -14,17 +14,17 @@ import java.util.List;
 public class BaseFlow {
     private Logger logger = Logger.getLogger(BaseFlow.class);
     public WebElement waitElementVisible(By locator){
-        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),10);
+        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),20);
         return webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public WebElement waitElementClickable(By locator){
-        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),10);
+        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),20);
         return webDriverWait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public WebElement waitElementPresence(By locator){
-        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),10);
+        WebDriverWait webDriverWait = new WebDriverWait(BaseTest.getAndroidDriver(),20);
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
     //获取相同定位的所有元素

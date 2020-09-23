@@ -27,7 +27,7 @@ public class TikuTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void testCollection(){
+    public void testCollection() throws InterruptedException {
         TikuFlow tikuFlow = new TikuFlow();
         List<String> datas = tikuFlow.tikuCollection();
         //提示信息
