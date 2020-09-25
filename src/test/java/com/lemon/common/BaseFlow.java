@@ -64,6 +64,13 @@ public class BaseFlow {
         return text;
     }
 
+    //封装的公共获取控件文本的方法
+    public String getPresenceElementText(By locator){
+        String text = waitElementPresence(locator).getText();
+        logger.info("获取元素【" + locator + "】文本值【" + text + "】");
+        return text;
+    }
+
     //点击返回键再点击题库进入登录页面
     public void pressBack(){
         //实例化按键对象

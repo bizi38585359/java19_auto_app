@@ -1,7 +1,9 @@
 package com.lemon.businessflow;
 
 import com.lemon.common.BaseFlow;
+import com.lemon.constants.GlobalConstants;
 import com.lemon.pageobject.*;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -10,7 +12,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TikuFlow extends BaseFlow {
-    public Boolean tikuAnswer(){
+    private Logger logger = Logger.getLogger(BaseFlow.class);
+    public Boolean tikuAnswer() throws InterruptedException {
         //1、随机选择领域标题
         List<WebElement> allElements = getAllElements(TikuPage.fieldTitleBy);
         //Random类-->随机类
@@ -34,6 +37,17 @@ public class TikuFlow extends BaseFlow {
         diffcultElement.add(DiffcultLevelPage.secondLevelBy);
         diffcultElement.add(DiffcultLevelPage.thirdLevelBy);
         click(diffcultElement.get(indexLevel));
+        //2、1判断套题列表是否为空
+        try {
+            if (getPresenceElementText(TikuPage.noContentBy).equals(GlobalConstants.NOCONTENT)) {
+                Thread.sleep(2000);
+                pressBack();
+                click(diffcultElement.get(Math.abs(2 - indexLevel)));
+            }
+        }catch (Exception e){
+//            e.printStackTrace();
+            logger.info("套题列表不为空");
+        }
         //3、随机选择套题
         List<WebElement> subjectTitleElements = getAllElements(SuiteSubjectPage.suiteSubjectTitleBy);
         int indextitle = random.nextInt(subjectTitleElements.size());
@@ -43,9 +57,13 @@ public class TikuFlow extends BaseFlow {
         //等待答案内容是否可见
         Boolean isAnswerBodyVisible = waitElementVisible(SubjectDetailPage.answerBodyBy).isDisplayed();
         //返回到首页
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         pressBack();
+        Thread.sleep(2000);
         //返回--答案显示与否
         return isAnswerBodyVisible;
     }
@@ -70,6 +88,18 @@ public class TikuFlow extends BaseFlow {
         diffcultElement.add(DiffcultLevelPage.secondLevelBy);
         diffcultElement.add(DiffcultLevelPage.thirdLevelBy);
         click(diffcultElement.get(indexLevel));
+        //2、1判断套题列表是否为空
+        try {
+            if (getPresenceElementText(TikuPage.noContentBy).equals(GlobalConstants.NOCONTENT)) {
+                Thread.sleep(2000);
+                pressBack();
+                click(diffcultElement.get(Math.abs(2 - indexLevel)));
+            }
+        }catch (Exception e){
+//            e.printStackTrace();
+            logger.info("套题列表不为空");
+        }
+
         //3、随机选择套题
         List<WebElement> subjectTitleElements = getAllElements(SuiteSubjectPage.suiteSubjectTitleBy);
         int indextitle = random.nextInt(subjectTitleElements.size());
