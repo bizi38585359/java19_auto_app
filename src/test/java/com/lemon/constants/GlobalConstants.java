@@ -8,4 +8,5 @@ public class GlobalConstants {
     public static final String APP_PACKAGE = "com.lemon.lemonban";
     public static final String APP_ACTIVITY = "com.lemon.lemonban.activity.WelcomeActivity";
     public static final String APPIUM_URL = "http://127.0.0.1:4723/wd/hub";
+    public static final String NOCONTENT = "暂时木有内容呀~~";
 }

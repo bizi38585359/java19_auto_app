@@ -20,7 +20,7 @@ public class TikuTest extends BaseTest {
         loginFlow.loginSuccess("13590408096","408096");
     }
     @Test(priority = 3)
-    public void testAnswer(){
+    public void testAnswer() throws InterruptedException {
         TikuFlow tikuFlow = new TikuFlow();
         Boolean isSuccess = tikuFlow.tikuAnswer();
         Assert.assertTrue(isSuccess);
